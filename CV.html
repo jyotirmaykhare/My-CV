@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotirmay Khare - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .hero .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .hero .contact-info a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .hero .contact-info a:hover {
+            opacity: 1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #667eea;
+            position: relative;
+        }
+
+        section h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #667eea;
+            margin: 1rem auto;
+        }
+
+        /* Summary */
+        .summary {
+            background: #f8f9fa;
+        }
+
+        .summary-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Core Competencies */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .competency-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .competency-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .competency-item h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience */
+        .experience {
+            background: #f8f9fa;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Education */
+        .education {
+            background: #f8f9fa;
+        }
+
+        .education-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .education-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .institution {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Certifications */
+        .certification-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .certification-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .certification-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skills {
+            background: #f8f9fa;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Achievements */
+        .achievements-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .achievement-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        /* Extra-Curricular */
+        .extra-curricular {
+            background: #f8f9fa;
+        }
+
+        .extra-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 1rem 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">JK</div>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#competencies">Competencies</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>JYOTIRMAY KHARE</h1>
+        <p>Entry-Level Developer | Web Development | Game Development</p>
+        <div class="contact-info">
+            <a href="mailto:jyotirmaykhare@gmail.com">📧 jyotirmaykhare@gmail.com</a>
+            <a href="tel:+919685032985">📱 +91-9685032985</a>
+            <a href="#">📍 Jalandhar, Punjab</a>
+            <a href="https://www.linkedin.com/in/jyotirmay-khare" target="_blank">💼 LinkedIn</a>
+            <a href="http://github.com/jyotirmaykhare" target="_blank">💻 GitHub</a>
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section class="summary" id="summary">
+        <div class="container">
+            <h2>Professional Summary</h2>
+            <div class="summary-content">
+                <p>Detail-oriented entry-level developer skilled in HTML, CSS, JavaScript, Python, and GDScript, with a strong focus on building clean and maintainable solutions. Known for quick learning and effective problem-solving. Seeking to begin my career in web development while expanding my expertise in both web and interactive application workflows.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies -->
+    <section id="competencies">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <div class="competencies-grid">
+                <div class="competency-item">
+                    <h3>Web Development</h3>
+                    <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="competency-item">
+                    <h3>Responsive Design</h3>
+                    <p>Responsive Web Design</p>
+                </div>
+                <div class="competency-item">
+                    <h3>Front-End</h3>
+                    <p>Front-End Development</p>
+                </div>
+                <div class="competency-item">
+                    <h3>Python</h3>
+                    <p>Basics / Backend Logic</p>
+                </div>
+                <div class="competency-item">
+                    <h3>Game Development</h3>
+                    <p>GDScript (Godot Engine)</p>
+                </div>
+                <div class="competency-item">
+                    <h3>Linux</h3>
+                    <p>Basic Commands & File System Management</p>
+                </div>
+                <div class="competency-item">
+                    <h3>Version Control</h3>
+                    <p>Git/GitHub</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>1. Internal Hackathon - Smart India Hackathon (2025)</h3>
+                <p>Worked for team in Internal Hackathon for Smart India Hackathon (2025) with GDScript for Game Development on the platform "Godot Engine" which is story based game developed in 2-D platform, also used Asperite for Designing Characters and their tools.</p>
+            </div>
+            <div class="experience-item">
+                <h3>2. IOT Based Project</h3>
+                <p>Worked on team project on IOT based Project which consists Arduino integration with some sensors using C++ programming language, which provides the solution on different problems such as Body-Posture Correction, and some other workings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>Using HTML, CSS, JAVASCRIPT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="education" id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Technology in Computer Science and Engineering</h3>
+                <p class="institution">Lovely Professional University, Jalandhar, Punjab</p>
+                <p>2025-29 (Pursuing)</p>
+            </div>
+            <div class="education-item">
+                <h3>CLASS XII</h3>
+                <p class="institution">Maharishi Vidya Mandir, Chhatarpur (Madhya Pradesh)</p>
+                <p>CBSE Board, 2024-25</p>
+            </div>
+            <div class="education-item">
+                <h3>CLASS X</h3>
+                <p class="institution">Maharishi Vidya Mandir, Chhatarpur (Madhya Pradesh)</p>
+                <p>CBSE Board, 2024-25</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certification-card">
+                <h3>Productivity Time Management Mastery</h3>
+                <p>Completed a non-technical mooc course on the topic of "PRODUCTIVITY TIME MANAGEMENT MASTERY" on Mindluster.</p>
+                <p><a href="https://www.mindluster.com/profile#c_courses" target="_blank">View Certificate</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <p>Python, C++</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <p>Git, Linux, Arduino, Godot</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <div class="container">
+            <h2>Achievements</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <p>Successfully built and deployed multiple responsive web pages using HTML5, CSS3, and JavaScript.</p>
+                </div>
+                <div class="achievement-item">
+                    <p>Completed personal portfolio website demonstrating UI/UX, responsive layout, and front-end development skills.</p>
+                </div>
+                <div class="achievement-item">
+                    <p>Created interactive game prototypes using GDScript in the Godot Engine.</p>
+                </div>
+                <div class="achievement-item">
+                    <p>Used Linux CLI for running applications, managing files, and basic system navigation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra-Curricular Activities -->
+    <section class="extra-curricular">
+        <div class="container">
+            <h2>Extra-Curricular Activities</h2>
+            <div class="extra-content">
+                <p>"Actively explore creative solutions through design thinking and innovative problem-solving, demonstrated by extensively re-engineering an outdated laptop—unlocking advanced BIOS features, enabling high-speed dual-channel memory, optimizing processor capabilities, and implementing custom system configurations that pushed the hardware far beyond its original performance specifications."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jyotirmay Khare. All rights reserved.</p>
+            <p>I declare that all the details mentioned in this portfolio are accurate and I take full responsibility for the correctness of the information.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.competency-item, .experience-item, .project-card, .education-item, .achievement-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
